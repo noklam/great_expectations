@@ -10,6 +10,7 @@ from great_expectations.cli.upgrade_helpers.base_upgrade_helper import BaseUpgra
 from great_expectations.cli.util import cli_message
 from great_expectations.data_context.store import (
     DatabaseStoreBackend,
+    OracleStoreBackend,
     HtmlSiteStore,
     InMemoryStoreBackend,
     MetricStore,

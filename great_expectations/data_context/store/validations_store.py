@@ -1,6 +1,6 @@
 from great_expectations.core import ExpectationSuiteValidationResultSchema
 from great_expectations.data_context.store.database_store_backend import (
-    DatabaseStoreBackend,
+    DatabaseStoreBackend, OracleStoreBackend
 )
 from great_expectations.data_context.store.store import Store
 from great_expectations.data_context.store.tuple_store_backend import TupleStoreBackend
@@ -106,6 +106,20 @@ A ValidationsStore manages Validation Results to ensure they are accessible via 
                     "filepath_suffix", ".json"
                 )
             elif issubclass(store_backend_class, DatabaseStoreBackend):
+                # Provide defaults for this common case
+                store_backend["table_name"] = store_backend.get(
+                    "table_name", "ge_validations_store"
+                )
+                store_backend["key_columns"] = store_backend.get(
+                    "key_columns",
+                    [
+                        "expectation_suite_name",
+                        "run_name",
+                        "run_time",
+                        "batch_identifier",
+                    ],
+                )
+            elif issubclass(store_backend_class, OracleStoreBackend):
                 # Provide defaults for this common case
                 store_backend["table_name"] = store_backend.get(
                     "table_name", "ge_validations_store"

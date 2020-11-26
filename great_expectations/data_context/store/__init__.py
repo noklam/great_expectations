@@ -1,6 +1,6 @@
 from great_expectations.util import verify_dynamic_loading_support
 
-from .database_store_backend import DatabaseStoreBackend
+from .database_store_backend import DatabaseStoreBackend, OracleStoreBackend
 from .expectations_store import ExpectationsStore
 from .html_site_store import HtmlSiteStore
 from .metric_store import EvaluationParameterStore, MetricStore
