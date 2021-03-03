@@ -1277,7 +1277,7 @@ class SqlAlchemyDataset(MetaSqlAlchemyDataset):
                 table_name=table_name, custom_sql=custom_sql
             )
         else:
-            stmt = 'CREATE TEMPORARY TABLE "{table_name}" AS {custom_sql}'.format(
+            stmt = 'CREATE TEMPORARY TABLE {table_name} AS {custom_sql}'.format(
                 table_name=table_name, custom_sql=custom_sql
             )
 
@@ -2184,3 +2184,7 @@ WHERE
                 for like_pattern in like_pattern_list
             ]
         )
+
+
+
+
